@@ -42,7 +42,7 @@ gulp.task('js', function() {
     .on('error', gutil.log)
     .pipe(gulpif(env === 'production', uglify()))
     .pipe(gulp.dest(outputDir + 'js'))
-    .pipe(connect.reload())
+    .pipe(connect.reload());
 });
 
 gulp.task('compass', function() {
@@ -56,7 +56,7 @@ gulp.task('compass', function() {
     })
     .on('error', gutil.log))
 //    .pipe(gulp.dest( outputDir + 'css'))
-    .pipe(connect.reload())
+    .pipe(connect.reload());
 });
 
 gulp.task('watch', function() {
@@ -76,13 +76,13 @@ gulp.task('html', function() {
   gulp.src('builds/development/*.html')
     .pipe(gulpif(env === 'production', minifyHTML()))
     .pipe(gulpif(env === 'production', gulp.dest(outputDir)))
-    .pipe(connect.reload())
+    .pipe(connect.reload());
 });
 
 // Copy images to production
 gulp.task('move', function() {
   gulp.src('builds/development/images/**/*.*')
-  .pipe(gulpif(env === 'production', gulp.dest(outputDir+'images')))
+  .pipe(gulpif(env === 'production', gulp.dest(outputDir+'images')));
 });
 
 gulp.task('default', ['watch', 'html', 'js', 'compass', 'move', 'connect']);
