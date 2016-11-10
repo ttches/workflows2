@@ -7,4 +7,15 @@ body {
 .scene {
   position: relative;
   padding: 20px 0;
+
+  article {
+    @include container(95%);
+    @include breakpoint($medium) {
+      @include container;
+    }
+  }
+
+  @include breakpoint($wide) {
+    padding: 40px 0;
+  }
 }
